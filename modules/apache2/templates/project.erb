@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+	#DocumentRoot /usr/local/share/wsgi/project/root
+	
+	Alias /media/ /usr/local/share/wsgi/project/media/
+	Alias /static/ /usr/local/share/wsgi/project/static/
+	
+	<Directory /usr/local/wsgi/project/static>
+    Order deny,allow
+    Allow from all
+    </Directory>
+    
+    <Directory /usr/local/wsgi/project/media>
+    Order deny,allow
+    Allow from all
+    </Directory>
+	
+	WSGIScriptAlias / /usr/local/share/wsgi/project/project.wsgi
+	WSGIDaemonProcess project processes=<%= processorcount %>
+	WSGIProcessGroup project
+</VirtualHost>

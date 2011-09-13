@@ -1,0 +1,24 @@
+import os
+import sys
+
+sys.path.append('/vagrant')
+sys.path.append('/vagrant/scup')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'scup.settings'
+
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+
+import scup.monitor
+scup.monitor.start(interval=1.0)
+
+from django.core.management import setup_environ
+import settings
+setup_environ(settings)
+
+from werkzeug.debug import DebuggedApplication
+application = DebuggedApplication(application, evalex=True)
+
+def null_technical_500_response(request, exc_type, exc_value, tb):
+    raise exc_type, exc_value, tb
+from django.views import debug
+debug.technical_500_response = null_technical_500_response
