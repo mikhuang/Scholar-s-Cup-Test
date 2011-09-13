@@ -12,4 +12,11 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    
+    
+    
+    # for django-fiber
+    (r'^api/v1/', include('fiber.api.urls')),
+    (r'^admin/fiber/', include('fiber.admin_urls')),
+    (r'^jsi18n/$', 'django.views.i18n.javascript_catalog', {'packages': ('fiber',),}),
 )

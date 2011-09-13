@@ -1,4 +1,5 @@
 # Django settings for scup project.
+import django.conf.global_settings as DEFAULT_SETTINGS
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -80,6 +81,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -99,6 +101,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'fiber.middleware.ObfuscateEmailAddressMiddleware',
+    'fiber.middleware.AdminPageMiddleware',
+    'fiber.middleware.PageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'scup.urls'
@@ -108,6 +113,12 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     "/vagrant/scup/templates",
+)
+
+
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.core.context_processors.request',
+    'fiber.context_processors.page_info',
 )
 
 INSTALLED_APPS = (
@@ -124,6 +135,10 @@ INSTALLED_APPS = (
     # 3rd Party Plugins
     'django_extensions',
     'south',
+    'piston',
+    'mptt',
+    'compressor',
+    'fiber',
     
     # Scup Apps
     'scup.materials',
