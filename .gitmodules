@@ -1,0 +1,3 @@
+[submodule "django-fiber"]
+	path = scup/django-fiber
+	url = https://github.com/ridethepony/django-fiber.git

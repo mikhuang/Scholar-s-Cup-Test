@@ -10,14 +10,14 @@
 	<div id="wpr-page">
 		<div id="page">
 			<header>
-				<div id="logo">Django Fiber example</div>
+				<div id="logo">Django Fiber exampl MATERIALS</div>
 				<nav id="mainmenu" class="clearfix">
-					{% show_menu "mainmenu" 1 3 "all" %}
+					{% show_menu "mainmenu" 1 1 %}
 				</nav>
 			</header>
 			<aside id="aside-left">
 				<nav id="submenu">
-					{% show_menu "sidemenu" 1 3 "all" %}
+					{% show_menu "mainmenu" 2 3 %}
 				</nav>
 			</aside>
 			<section id="main">
@@ -31,7 +31,9 @@
 					</ul>
 				</nav>
 				<article>
-					{% show_page_content "main" %}
+				  {% for material in materials %}
+				  {{ material }}
+				  {% endfor %}
 				</article>
 			</section>
 			<aside id="aside-right">

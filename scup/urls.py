@@ -13,7 +13,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     
-    
+    (r'^materials', 'scup.materials.views.index'),
     
     # for django-fiber
     (r'^api/v1/', include('fiber.api.urls')),

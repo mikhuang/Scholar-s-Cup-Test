@@ -289,3 +289,9 @@ ol li {
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+/* Scholar's Cup Specific */
+
+nav {
+	padding-bottom: 10px;
+}

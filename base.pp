@@ -29,7 +29,12 @@ class python {
 	package {
 	   'git-core': ensure => latest;
 	   'mercurial': ensure => latest;
-	}					       
+	}
+    
+    # PIL libraries
+    package {
+        'libjpeg': ensure => latest;
+    }	       
 }									   
 class { "python": stage => "pre" }
 
