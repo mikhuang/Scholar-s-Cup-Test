@@ -98,7 +98,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware', 
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'fiber.middleware.ObfuscateEmailAddressMiddleware',
@@ -137,9 +137,11 @@ INSTALLED_APPS = (
     'south',
     'piston',
     'mptt', # modified pre-order traversal tree
+    'reversion',
     'compressor',
-    'fiber',
+    'fiber', 
     
+
     # Scup Apps
     'scup.materials',
     'scup.tournaments',

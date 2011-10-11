@@ -86,9 +86,14 @@ class djangobasics {
     	provider => pip,
     }
     
-    package { "django-fiber":
-    	ensure => "latest",
-    	provider => pip,
+    #package { "django-fiber":
+    #    ensure => "latest",
+    #    provider => pip,
+    #}
+    
+    package { "django-reversion":
+        ensure => "latest",
+        provider => pip,
     }
     
     package { "PIL":
